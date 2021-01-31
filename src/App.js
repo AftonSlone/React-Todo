@@ -1,14 +1,16 @@
 import React from "react";
 import TodoList from "./components/TodoList";
 import TodoForm from "./components/TodoForm";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
-const StyledDiv = styled.div`
-  width: 100%;
+const GlobalStyle = createGlobalStyle`
+
+
+  body {width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #2d2d37;
+  background-color: #2d2d37;}
 
   h1,
   h2,
@@ -44,6 +46,8 @@ const StyledDiv = styled.div`
   .completed {
     text-decoration: line-through;
   }
+
+
 `;
 
 class App extends React.Component {
@@ -97,11 +101,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <StyledDiv>
+      <div>
+        <GlobalStyle />
         <h2>Todo List: MVP</h2>
         <TodoList toggleTodo={this.toggleTodo} todos={this.state.todos} />
         <TodoForm addNewTodo={this.addNewTodo} clearTodos={this.clearTodos} />
-      </StyledDiv>
+      </div>
     );
   }
 }
